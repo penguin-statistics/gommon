@@ -1,0 +1,40 @@
+name: Test Runner
+
+on:
+  # trigger on any push to any branch
+  push:
+    branches:
+      - '*'
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v3
+
+      - name: "Docker: Run Tests"
+        id: ghcr-docker
+        uses: 'penguin-statistics/actions/ghcr-docker@main'
+        with:
+          version: '__check__'
+          repository: 'penguin-statistics/gommon'
+          push: false
+      
+      - name: "Docker: Extract Coverage from Container"
+        id: extract
+        uses: shrink/actions-docker-extract@v1
+        with:
+          image: penguin-statistics/gommon:__check__
+          path: /app/coverage.out
+      
+      - name: "Codecov: Upload Coverage"
+        uses: codecov/codecov-action@v3
+        with:
+          files: ${{ steps.extract.outputs.destination }}/coverage.out
+          flags: unittests
+          name: unittests
+          fail_ci_if_error: true
