@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option go_package = "exusiai.dev/gommon/model/pb";
+
+enum Server {
+  CN = 0;
+  US = 1;
+  JP = 2;
+  KR = 3;
+}
