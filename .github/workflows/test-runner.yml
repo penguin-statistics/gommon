@@ -15,27 +15,19 @@ jobs:
     steps:
       - name: "Checkout"
         uses: actions/checkout@v3
-
-      - name: "Docker: Run Tests"
-        id: ghcr-docker
-        uses: 'penguin-statistics/actions/ghcr-docker@main'
-        with:
-          version: '__check__'
-          repository: 'penguin-statistics/gommon'
-          push: false
-          load: true
       
-      - name: "Docker: Extract Coverage from Container"
-        id: extract
-        uses: shrink/actions-docker-extract@v1
+      - name: "Setup Go"
+        uses: actions/setup-go@v3
         with:
-          image: ghcr.io/penguin-statistics/gommon:main
-          path: app/coverage.out
+          go-version: '>=1.19'
+
+      - name: "Run Tests"
+        run: go test -v -coverprofile=coverage.out -covermode=atomic ./...
       
       - name: "Codecov: Upload Coverage"
         uses: codecov/codecov-action@v3
         with:
-          files: ${{ steps.extract.outputs.destination }}/coverage.out
+          files: coverage.out
           flags: unittests
           name: unittests
           fail_ci_if_error: true
