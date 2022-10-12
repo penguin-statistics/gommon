@@ -5,6 +5,7 @@ WORKDIR /app
 FROM base AS tester
 ENV GOOS linux
 ENV GOARCH amd64
+ENV CGO_ENABLED 0
 
 # build-args
 ARG VERSION
