@@ -29,8 +29,8 @@ jobs:
         id: extract
         uses: shrink/actions-docker-extract@v1
         with:
-          image: penguin-statistics/gommon:main
-          path: /app/coverage.out
+          image: penguin-statistics/gommon:latest
+          path: app/coverage.out
       
       - name: "Codecov: Upload Coverage"
         uses: codecov/codecov-action@v3
