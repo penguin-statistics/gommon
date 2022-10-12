@@ -2,7 +2,7 @@
      alt="Penguin Statistics - Logo"
      width="96px" />
 
-# Penguin Statistics - V3 Backend
+# Penguin Statistics - `gommon`
 
 [![License](https://img.shields.io/github/license/penguin-statistics/gommon)](https://github.com/penguin-statistics/gommon/blob/main/LICENSE)
 [![Last Commit](https://img.shields.io/github/last-commit/penguin-statistics/gommon)](https://github.com/penguin-statistics/gommon/commits/main)
