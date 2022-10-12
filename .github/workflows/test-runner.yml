@@ -23,6 +23,7 @@ jobs:
           version: '__check__'
           repository: 'penguin-statistics/gommon'
           push: false
+          load: true
       
       - name: "Docker: Extract Coverage from Container"
         id: extract
