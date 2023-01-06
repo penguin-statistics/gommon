@@ -12,4 +12,6 @@ const (
 	// PenguinIDAuthorizationRealm is the authorization realm (prefix of value
 	// in the `Authorization` header)
 	PenguinIDAuthorizationRealm = "PenguinID"
+
+	LocalsAccountIDKey = "accountId"
 )
