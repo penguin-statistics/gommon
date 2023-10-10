@@ -23,7 +23,7 @@ const (
 	ViolationReliabilityRejectRuleRangeLeast = 1 << 8
 	ViolationReliabilityRejectRuleRangeMost  = 1 << 10
 
-	ReportIdempotencyLifetime     = time.Hour * 24
+	ReportIdempotencyLifetime     = time.Hour * 6
 	ReportIdempotencyRedisHashKey = "report-idempotency"
 
 	RecruitStageID  = "recruit"
